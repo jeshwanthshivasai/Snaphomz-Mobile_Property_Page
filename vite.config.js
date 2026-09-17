@@ -6,5 +6,17 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true
+  },
+  build: {
+    sourcemap: false,
+    minify: 'esbuild',
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', '@vercel/analytics']
+        }
+      }
+    }
   }
 });
